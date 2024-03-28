@@ -11,6 +11,7 @@ pyvenv.cfg
 *.so
 .env
 .replit
+django-orm-watching-storage-master/project/.env
 
 # Distribution / packaging
 .Python

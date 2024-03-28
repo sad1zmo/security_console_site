@@ -4,7 +4,6 @@ from django.shortcuts import render
 from django.utils.timezone import localtime
 from datetime import timedelta
 from django.shortcuts import get_object_or_404
-# from storage_information_view import get_duration, format_duration
 
 
 def get_duration(visit):
