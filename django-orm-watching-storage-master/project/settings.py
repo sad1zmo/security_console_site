@@ -9,10 +9,11 @@ DATABASES = {
         'HOST': os.environ["HOST"],
         'PORT': os.environ["PORT"],
         'NAME': os.environ["NAME"],
-        'USER': os.environ["USER"],
+        'USER': os.environ["DB_USER"],
         'PASSWORD': os.environ["PASSWORD"],
     }
 }
+
 
 INSTALLED_APPS = ['datacenter']
 
