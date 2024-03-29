@@ -1,30 +1,11 @@
-from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
-from django.utils.timezone import localtime
-
-
-incomplete_visits = Visit.objects.filter(entered_at__isnull=False,
-                                         leaved_at__isnull=True)
-
-
-def get_duration(visit):
-    if visit.leaved_at is None:
-        visit_duration = localtime() - visit.entered_at
-    else:
-        visit_duration = visit.leaved_at - visit.entered_at
-    return visit_duration
-
-
-def format_duration(duration):
-    days, seconds = duration.days, duration.seconds
-    hours = days * 24 + seconds // 3600
-    minutes = (seconds % 3600) // 60
-    seconds = (seconds % 60)
-    return f"{hours}:{minutes}:{seconds}"
+from datacenter.time_visits_api import get_duration, format_duration
 
 
 def storage_information_view(request):
+    incomplete_visits = Visit.objects.filter(entered_at__isnull=False,
+                                             leaved_at__isnull=True)
     non_closed_visits = []
     for incomplete_visit in incomplete_visits:
         duration = get_duration(incomplete_visit)
@@ -39,6 +20,6 @@ def storage_information_view(request):
         )
 
     context = {
-        'non_closed_visits': non_closed_visits,  # не закрытые посещения
+        'non_closed_visits': non_closed_visits,
     }
     return render(request, 'storage_information.html', context)
