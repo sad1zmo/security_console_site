@@ -1,5 +1,4 @@
 from django.utils.timezone import localtime
-from datetime import timedelta
 
 SECONDS_IN_THE_HOUR = 3600
 HOURS_IN_THE_DAY = 24
@@ -26,7 +25,4 @@ def is_visit_long(visit, minutes=60):
     duration = get_duration(visit).total_seconds()
     suspicious_time = minutes * 60
 
-    if duration > suspicious_time:
-        return True
-    else:
-        return False
+    return duration > suspicious_time
