@@ -23,6 +23,5 @@ def format_duration(duration):
 
 def is_visit_long(visit, minutes=60):
     duration = get_duration(visit).total_seconds()
-    suspicious_time = minutes * 60
-
+    suspicious_time = minutes * SECONDS_IN_THE_MINUTE
     return duration > suspicious_time
