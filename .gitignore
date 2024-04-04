@@ -12,6 +12,8 @@ pyvenv.cfg
 .env
 .replit
 django-orm-watching-storage-master/project/.env
+pyproject.toml
+poetry.lock
 
 # Distribution / packaging
 .Python
